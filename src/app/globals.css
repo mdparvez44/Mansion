@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.fog-layer {
+  background: url("https://www.transparenttextures.com/patterns/foggy-birds.png");
+  opacity: 0.15;
+  animation: fogMove 60s linear infinite;
+}
+
+@keyframes fogMove {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(-100px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.bg-zoom {
+  animation: bgZoom 25s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes bgZoom {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
