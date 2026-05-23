@@ -2,39 +2,85 @@
 @tailwind components;
 @tailwind utilities;
 
-.fog-layer {
-  background: url("https://www.transparenttextures.com/patterns/foggy-birds.png");
-  opacity: 0.15;
-  animation: fogMove 60s linear infinite;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%; 
+}
+
+@keyframes zoomSlow {
+  0% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1.12);
+  }
+}
+
+@keyframes fogSlow {
+  0% { transform: translateX(-2%) translateY(0%); }
+  100% { transform: translateX(2%) translateY(1%); }
+}
+
+@keyframes fogFast {
+  0% { transform: translateX(2%) translateY(1%); }
+  100% { transform: translateX(-3%) translateY(-2%); }
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px rgba(255,255,255,0.2);
+  }
+  50% {
+    text-shadow: 0 0 25px rgba(255,255,255,0.6);
+  }
+  100% {
+    text-shadow: 0 0 5px rgba(255,255,255,0.2);
+  }
+}
+
+.animate-glow {
+  animation: glow 3s ease-in-out infinite;
+}
+
+.animate-zoomSlow {
+  animation: zoomSlow 20s ease-in-out infinite alternate;
 }
 
 @keyframes fogMove {
-  0% {
-    transform: translateX(0);
+  from {
+    transform: translateX(-2%) translateY(0%);
   }
-
-  50% {
-    transform: translateX(-100px);
-  }
-
-  100% {
-    transform: translateX(0);
+  to {
+    transform: translateX(2%) translateY(2%);
   }
 }
 
 .bg-zoom {
-  animation: bgZoom 25s ease-in-out infinite;
-  transform-origin: center;
+  animation: slowZoom 25s ease-in-out infinite alternate;
+  transform: scale(1.08);
 }
 
-@keyframes bgZoom {
-  0% {
-    transform: scale(1);
+@keyframes slowZoom {
+  from {
+    transform: scale(1.05);
   }
-  50% {
-    transform: scale(1.08);
-  }
-  100% {
-    transform: scale(1);
+  to {
+    transform: scale(1.15);
   }
 }
+
+.particles {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.2) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.15;
+  animation: dustMove 12s linear infinite;
+}
+
+ 
