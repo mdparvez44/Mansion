@@ -1,0 +1,268 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%; 
+  overflow: hidden;
+}
+
+@keyframes zoomSlow {
+  0% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1.12);
+  }
+}
+
+@keyframes fogSlow {
+  0% { transform: translateX(-2%) translateY(0%); }
+  100% { transform: translateX(2%) translateY(1%); }
+}
+
+@keyframes fogFast {
+  0% { transform: translateX(2%) translateY(1%); }
+  100% { transform: translateX(-3%) translateY(-2%); }
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px rgba(255,255,255,0.2);
+  }
+  50% {
+    text-shadow: 0 0 25px rgba(255,255,255,0.6);
+  }
+  100% {
+    text-shadow: 0 0 5px rgba(255,255,255,0.2);
+  }
+}
+
+.animate-glow {
+  animation: glow 3s ease-in-out infinite;
+}
+
+.animate-zoomSlow {
+  animation: zoomSlow 20s ease-in-out infinite alternate;
+}
+
+@keyframes fogMove {
+  from {
+    transform: translateX(-2%) translateY(0%);
+  }
+  to {
+    transform: translateX(2%) translateY(2%);
+  }
+}
+
+@keyframes bgZoom {
+  0% { transform: scale(1.05); }
+  100% { transform: scale(1.12); }
+}
+
+.bg-animate {
+  animation: bgZoom 20s ease-in-out infinite alternate;
+}
+
+.particles {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.2) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.15;
+  animation: dustMove 12s linear infinite;
+}
+
+.centerText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
+
+
+.gateScene {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* 🏛️ background mansion */
+.mansionBg {
+  position: absolute;
+  inset: 0;
+
+  background-image: url("/images/mansion.jpg");
+  background-repeat: no-repeat;
+  background-position: center bottom;
+
+  background-size: cover;
+
+  z-index: 0;
+}
+
+/* 🌑 cinematic dark overlay */
+.darkOverlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(0,0,0,0.2),
+    rgba(0,0,0,0.75)
+  );
+  z-index: 1;
+}
+
+/* 🧱 bottom wall (10% height) */
+.bottomWall {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 10vh;
+
+  background: linear-gradient(to top, #111, transparent);
+
+  z-index: 2;
+}
+
+/* 🎮 THREE.JS LAYER (FIXED 50vh AREA) */
+.threeLayer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 55vh;
+
+  z-index: 3;
+
+  overflow: hidden;
+}
+
+.signBoard {
+  position: absolute;
+
+  width: clamp(140px, 18vw, 300px);
+
+  left: 33%;
+  bottom: 28vh;
+
+  transform: translate(-50%, 50%);
+
+  z-index: 5;
+}
+
+@media (max-width: 1024px) {
+  .signBoard {
+    left: 30%;
+    bottom: 24vh;
+  }
+}
+
+@media (max-width: 915px) {
+  .signBoard {
+    width: 220px;
+
+    left: 2%;
+    bottom: 30vh;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .signBoard {
+    width: 200px;
+
+    left: 5%;
+    bottom: 30vh;
+  }
+}
+
+@media (max-width: 320px) {
+  .signBoard {
+    width: 100px;
+
+    left: 2%;
+    bottom: 18vh;
+  }
+}
+
+/* 🔔 Bell Container */
+.bellContainer {
+  position: absolute;
+
+  right: 35%;
+  bottom: 22vh;
+
+  z-index: 20;
+  cursor: pointer;
+ 
+}
+
+/* 🔔 Bell Image */
+.bellImage {
+  width: clamp(140px, 18vw, 200px);
+
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+/* ✨ Hover Effect */
+.bellContainer:hover .bellImage {
+  transform: scale(1.08);
+
+  filter: drop-shadow(0 0 12px rgba(255,255,255,0.7));
+}
+
+/* 🔤 Bell Text */
+.bellText {
+  position: absolute;
+
+  left: 80%;
+  top: 100%;
+
+  transform: translate(-50%, 5px);
+
+  color: white;
+  font-size: clamp(12px, 1vw, 14px);
+
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  text-shadow: 0 0 10px rgba(255,255,255,0.5);
+  white-space: nowrap;
+}
+
+/* 🚀 Teleport Overlay */
+.teleportOverlay {
+  position: absolute;
+  inset: 0;
+
+  z-index: 9999;
+
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 🎬 Fullscreen Video */
+.teleportVideo {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
