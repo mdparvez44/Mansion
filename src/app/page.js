@@ -42,10 +42,10 @@ export default function Home() {
   <main className="relative w-screen h-screen overflow-hidden">
 
     {/* Background */}
-    <div className="absolute inset-0 z-0 animate-zoomSlow">
+    <div className=" absolute inset-0 z-0">
       <img
         src="/images/scene1.jpeg"
-        className="w-full h-full object-cover"
+        className=" fixed w-full h-full object-cover animate-zoomSlow"
         alt="bg"
       />
     </div>

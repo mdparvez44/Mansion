@@ -8,6 +8,7 @@ body {
   padding: 0;
   height: 100%;
   width: 100%; 
+  overflow: hidden;
 }
 
 @keyframes zoomSlow {
@@ -58,18 +59,13 @@ body {
   }
 }
 
-.bg-zoom {
-  animation: slowZoom 25s ease-in-out infinite alternate;
-  transform: scale(1.08);
+@keyframes bgZoom {
+  0% { transform: scale(1.05); }
+  100% { transform: scale(1.12); }
 }
 
-@keyframes slowZoom {
-  from {
-    transform: scale(1.05);
-  }
-  to {
-    transform: scale(1.15);
-  }
+.bg-animate {
+  animation: bgZoom 20s ease-in-out infinite alternate;
 }
 
 .particles {
