@@ -9,7 +9,7 @@ export default function Home() {
   const audioStarted = useRef(false);
   const audioRef = useRef(null);
 
-  const [scene, setScene] = useState("gate");
+  const [scene, setScene] = useState("intro");
 
   useEffect(() => {
     const wind = new Audio("/sounds/wind.mp3");
